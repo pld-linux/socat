@@ -8,7 +8,7 @@ Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	a93ad11c5e322a4bb3d5fd8cf93ea57c
 URL:		http://www.dest-unreach.org/socat/
-BuildRequires:	libwrap-devel >= 7.6-30 
+BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -24,7 +24,7 @@ example, as a TCP relay (one-shot or daemon), as a daemon-based
 socksifier, as a shell interface to Unix sockets, as an IPv6 relay,
 for redirecting TCP-oriented programs to a serial line, or to
 establish a relatively secure environment (su and chroot) for running
-client or server shell scripts with network connections. 
+client or server shell scripts with network connections.
 
 %description -l pl
 Socat to przeka¼nik do dwukierunkowego przesy³ania danych pomiêdzy
@@ -45,7 +45,7 @@ po³±czeniami sieciowymi.
 %setup -q -n %{name}-1.3
 
 %build
-%configure 
+%configure
 %{__make}
 
 %install
