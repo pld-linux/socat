@@ -1,12 +1,12 @@
 Summary:	Multipurpose relay
 Summary(pl):	Przeka¼nik o wielu zastosowaniach
 Name:		socat
-Version:	1.4.0.3
+Version:	1.4.1.0
 Release:	1
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	104f87f25305990bf46708f55e525973
+# Source0-md5:	1e1d04a4bd71e2a2f856d00e299dd39f
 URL:		http://www.dest-unreach.org/socat/
 BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel >= 0.9.7d
