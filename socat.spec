@@ -9,7 +9,7 @@ Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	57f33e67bf62f67ed32e0c9acc45f3a3
 URL:		http://www.dest-unreach.org/socat/
 BuildRequires:	libwrap-devel >= 7.6-30
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
