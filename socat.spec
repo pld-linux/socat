@@ -7,7 +7,7 @@ Group:		Networking/Utilities
 URL:		http://www.dest-unreach.org/socat/
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
 BuildRequires:	openssl-devel
-BuildRequires:	libwrap-devel
+BuildRequires:	libwrap-devel >= 7.6-30 
 BuildRequires:	readline-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -18,9 +18,7 @@ Socat is a relay for bidirectional data transfer between two independent data ch
 %setup -q -n %{name}-1.3
 
 %build
-# temporary disable libwrap
-%configure \
-	--disable-libwrap
+%configure 
 %{__make}
 
 %install
