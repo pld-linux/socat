@@ -2,7 +2,7 @@ Summary:	Multipurpose relay
 Summary(pl):	Przeka¼nik o wielu zastosowaniach
 Name:		socat
 Version:	1.4.3.0
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
@@ -43,6 +43,7 @@ po³±czeniami sieciowymi.
 
 %prep
 %setup -q -n %{name}-1.4
+sed -i -e 's#-lssl#-lssl -lcrypto#g' configure*
 
 %build
 %configure
