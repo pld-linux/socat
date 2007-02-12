@@ -1,5 +1,5 @@
 Summary:	Multipurpose relay
-Summary(pl):	Przeka¼nik o wielu zastosowaniach
+Summary(pl.UTF-8):   PrzekaÅºnik o wielu zastosowaniach
 Name:		socat
 Version:	1.5.0.0
 Release:	1
@@ -26,20 +26,20 @@ for redirecting TCP-oriented programs to a serial line, or to
 establish a relatively secure environment (su and chroot) for running
 client or server shell scripts with network connections.
 
-%description -l pl
-Socat to przeka¼nik do dwukierunkowego przesy³ania danych pomiêdzy
-dwoma niezale¿nymi kana³ami danych. Ka¿dy z tych kana³ów mo¿e byæ
-plikiem, potokiem, urz±dzeniem (terminalem, modemem itp.), gniazdem
+%description -l pl.UTF-8
+Socat to przekaÅºnik do dwukierunkowego przesyÅ‚ania danych pomiÄ™dzy
+dwoma niezaleÅ¼nymi kanaÅ‚ami danych. KaÅ¼dy z tych kanaÅ‚Ã³w moÅ¼e byÄ‡
+plikiem, potokiem, urzÄ…dzeniem (terminalem, modemem itp.), gniazdem
 (uniksowym, IPv4, IPv6 - surowym, UDP, TCP), klientem SOCKS4, proxy
-CONNECT, albo SSL itp. Socat ma mo¿liwo¶æ forkowania, logowania i
-zrzucania danych, ró¿ne tryby komunikacji miêdzyprocesowej oraz wiele
-innych opcji. Mo¿e byæ u¿ywane np. jako przeka¼nik TCP (jednorazowy
-lub demon), jako demon przesy³aj±cy przez SOCKS, jako interfejs dla
-pow³oki do gniazd uniksowych, jako przeka¼nik IPv6, do
-przekierowywania programów korzystaj±cych z TCP na port szeregowy albo
-do stworzenia wzglêdnie bezpiecznego ¶rodowiska (su i chroot) do
-uruchamiania klienckich lub serwerowych skryptów pow³oki z
-po³±czeniami sieciowymi.
+CONNECT, albo SSL itp. Socat ma moÅ¼liwoÅ›Ä‡ forkowania, logowania i
+zrzucania danych, rÃ³Å¼ne tryby komunikacji miÄ™dzyprocesowej oraz wiele
+innych opcji. MoÅ¼e byÄ‡ uÅ¼ywane np. jako przekaÅºnik TCP (jednorazowy
+lub demon), jako demon przesyÅ‚ajÄ…cy przez SOCKS, jako interfejs dla
+powÅ‚oki do gniazd uniksowych, jako przekaÅºnik IPv6, do
+przekierowywania programÃ³w korzystajÄ…cych z TCP na port szeregowy albo
+do stworzenia wzglÄ™dnie bezpiecznego Å›rodowiska (su i chroot) do
+uruchamiania klienckich lub serwerowych skryptÃ³w powÅ‚oki z
+poÅ‚Ä…czeniami sieciowymi.
 
 %prep
 %setup -q
