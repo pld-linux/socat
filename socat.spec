@@ -1,5 +1,5 @@
 Summary:	Multipurpose relay
-Summary(pl.UTF-8):   Przekaźnik o wielu zastosowaniach
+Summary(pl.UTF-8):	Przekaźnik o wielu zastosowaniach
 Name:		socat
 Version:	1.5.0.0
 Release:	1
