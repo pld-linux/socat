@@ -67,7 +67,7 @@ start() {
 				# include configuration:
 				. $config
 				# FIXME: check if variables are set
-				daemon --fork --pidfile /var/run/socat/$tun.pid \
+				daemon --fork --pidfile /var/run/socat/$tun.pid --makepid \
 					/usr/bin/socat ${SOCAT_OPT} ${OPTIONS} \
 					${BIADDRESS1} ${BIADDRESS2}
                                 RET=$?

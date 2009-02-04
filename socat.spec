@@ -1,10 +1,8 @@
-# TODO:
-# - init script is broken - daemon function doesn't create pid
 Summary:	Multipurpose relay
 Summary(pl.UTF-8):	Przekaźnik o wielu zastosowaniach
 Name:		socat
 Version:	1.7.0.0
-Release:	1.9
+Release:	2
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
@@ -15,6 +13,7 @@ URL:		http://www.dest-unreach.org/socat/
 BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	readline-devel
+Requires:	rc-scripts >= 0.4.1.26-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
