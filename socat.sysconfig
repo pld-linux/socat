@@ -1,0 +1,11 @@
+# Customized settings for socat                                                                     
+
+# Nice level for sysconf
+SERVICE_RUN_NICE_LEVEL="+0"
+
+# Options for all tunnels
+#SOCAT_OPT="-ly"
+
+# Tunnels to set up. For each tunnel name, there should be config file in /etc/socat
+TUNNELS="mysql"
+#TUNNELS=""

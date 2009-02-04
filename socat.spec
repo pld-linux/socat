@@ -1,12 +1,16 @@
+# TODO:
+# - init script is broken - daemon function doesn't create pid
 Summary:	Multipurpose relay
 Summary(pl.UTF-8):	Przekaźnik o wielu zastosowaniach
 Name:		socat
 Version:	1.7.0.0
-Release:	1
+Release:	1.9
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	be5f942c44dafefa58365e9dc3ada81f
+Source1:	%{name}.init
+Source2:	%{name}.sysconfig
 URL:		http://www.dest-unreach.org/socat/
 BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel >= 0.9.7d
@@ -51,16 +55,34 @@ sed -i -e 's#-lssl#-lssl -lcrypto#g' configure*
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,/var/run/%{name}} \
+	$RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig,%{name}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+/sbin/chkconfig --add %{name}
+%service mdadm restart "socat"
+
+%preun
+if [ "$1" = "0" ]; then
+        %service socat stop
+        /sbin/chkconfig --del socat
+fi
 
 %files
 %defattr(644,root,root,755)
 %doc BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ README SECURITY
+%dir /etc/%{name}
+%attr(754,root,root) /etc/rc.d/init.d/%{name}
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 %attr(755,root,root) %{_bindir}/*
+%dir /var/run/%{name}
 %{_mandir}/man?/*
