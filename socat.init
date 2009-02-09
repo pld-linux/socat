@@ -89,7 +89,7 @@ stop() {
 			[ -f "$pidfile" ] || continue
 			pid=`cat "$pidfile"`
 			show "Stopping socat tunnel %s" "$tun"; busy
-			pkill -g pid && ok
+			pkill -g $pid && ok
 		done
 		rm -f /var/lock/subsys/socat >/dev/null 2>&1
 	else
