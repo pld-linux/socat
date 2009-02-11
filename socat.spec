@@ -63,7 +63,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,/var/run/%{name}} \
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
 
-cat >> $RPM_BUILD_ROOT/etc/%{name}/example.conf <<'EOF'
+cat >> $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/example.conf <<'EOF'
 # socat [options] <bi-address> <bi-address>
 OPTIONS=""
 BIADDRESS1="UNIX-LISTEN:/var/lib/mysql/mysql.sock,fork,user=mysql,group=mysql,mode=777"
@@ -79,15 +79,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %preun
 if [ "$1" = "0" ]; then
-        %service socat stop
-        /sbin/chkconfig --del socat
+	%service socat stop
+	/sbin/chkconfig --del socat
 fi
 
 %files
 %defattr(644,root,root,755)
 %doc BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ README SECURITY
-%dir /etc/%{name}
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/%{name}/*.conf
+%dir %{_sysconfdir}/%{name}
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*.conf
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_bindir}/*
