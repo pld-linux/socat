@@ -75,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add %{name}
-%service mdadm restart "socat"
+%service socat restart "socat"
 
 %preun
 if [ "$1" = "0" ]; then
