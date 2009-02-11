@@ -7,5 +7,5 @@ SERVICE_RUN_NICE_LEVEL="+0"
 #SOCAT_OPT="-ly"
 
 # Tunnels to set up. For each tunnel name, there should be config file in /etc/socat
-TUNNELS="mysql"
-#TUNNELS=""
+#TUNNELS="mysql"
+TUNNELS=""
