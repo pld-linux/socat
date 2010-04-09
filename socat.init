@@ -43,9 +43,22 @@ tunlsup() {
 	return $ret
 }
 
+rclog_warning() {
+	if is_yes "${RC_LOGGING}"; then
+		echo "WARNING: RC_LOGGING is enabled!"
+		echo "socat instances will be started but you can have some problems, i.e.:"
+		echo " - service status is not available"
+		echo " - instances can be stopped manually only"
+		echo " - duplicate processes can happen"
+		echo
+	fi
+}
+
+
 start() {
 	# Check if the service is already running?
 	if ! tunlsup; then
+		rclog_warning
 		msg_starting "socat"; started
 		for tun in $TUNNELS; do
 			# Clear vars:
@@ -81,6 +94,7 @@ start() {
 }
 
 stop() {
+	rclog_warning
 	if tunlsup; then
 		# Stop daemons.
 		msg_stopping "socat"; started
@@ -113,6 +127,7 @@ case "$1" in
 	exit $?
 	;;
   status)
+  	rclog_warning
 	nls "Configured tunnels:"
 	echo " $TUNNELS"
 	nls "Currently active tunnels:"
