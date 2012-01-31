@@ -9,6 +9,7 @@ Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	eb563dd00b9d39a49fb62a677fc941fe
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
+Source3:	%{name}.tmpfiles
 URL:		http://www.dest-unreach.org/socat/
 BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel >= 0.9.7d
@@ -55,13 +56,15 @@ sed -i -e 's#-lssl#-lssl -lcrypto#g' configure*
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,/var/run/%{name}} \
-	$RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig,%{name}}
+	$RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig,%{name}} \
+	$RPM_BUILD_ROOT/usr/lib/tmpfiles.d
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
+install %{SOURCE3} $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/%{name}.conf
 
 cat >> $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/example.conf <<'EOF'
 # socat [options] <bi-address> <bi-address>
@@ -92,4 +95,5 @@ fi
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
 %attr(755,root,root) %{_bindir}/*
 %dir /var/run/%{name}
+/usr/lib/tmpfiles.d/%{name}.conf
 %{_mandir}/man?/*
