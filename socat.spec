@@ -1,20 +1,21 @@
 Summary:	Multipurpose relay
 Summary(pl.UTF-8):	Przekaźnik o wielu zastosowaniach
 Name:		socat
-Version:	1.7.2.4
+Version:	1.7.3.0
 Release:	1
 License:	GPL
 Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	69b8155dd442a6f24e28ef5407d868eb
+# Source0-md5:	b607edb65bc6c57f4a43f06247504274
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	%{name}.tmpfiles
-Patch0:		%{name}-autoconf.patch
+Patch0:		%{name}-fixes.patch
 URL:		http://www.dest-unreach.org/socat/
 BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	readline-devel
+BuildRequires:	yodl
 Requires:	rc-scripts >= 0.4.1.26-2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
