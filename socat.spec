@@ -57,7 +57,8 @@ sed -i -e 's#-lssl#-lssl -lcrypto#g' configure*
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-%configure
+%configure \
+	CFLAGS="%{rpmcflags} -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
 %{__make}
 
 %install
