@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Przekaźnik o wielu zastosowaniach
 Name:		socat
 Version:	1.7.4.3
 Release:	1
-License:	GPL
+License:	GPL v2
 Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
 # Source0-md5:	5c28dd258ba928326d0716fcb4895cc2
@@ -14,8 +14,12 @@ URL:		http://www.dest-unreach.org/socat/
 BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	readline-devel
+BuildRequires:	rpmbuild(macros) >= 1.644
+BuildRequires:	sed >= 4.0
 BuildRequires:	yodl
+Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts >= 0.4.1.26-2
+Requires:	systemd-units >= 38
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,7 +52,8 @@ połączeniami sieciowymi.
 
 %prep
 %setup -q
-sed -i -e 's#-lssl#-lssl -lcrypto#g' configure*
+
+%{__sed} -i -e 's#-lssl#-lssl -lcrypto#g' configure*
 
 %build
 %{__gettextize}
@@ -63,14 +68,14 @@ sed -i -e 's#-lssl#-lssl -lcrypto#g' configure*
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1,/var/run/%{name}} \
 	$RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig,%{name}} \
-	$RPM_BUILD_ROOT/usr/lib/tmpfiles.d
+	$RPM_BUILD_ROOT%{systemdtmpfilesdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
-install %{SOURCE3} $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/%{name}.conf
+install %{SOURCE3} $RPM_BUILD_ROOT%{systemdtmpfilesdir}/%{name}.conf
 
 cat >> $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/example.conf <<'EOF'
 # socat [options] <bi-address> <bi-address>
@@ -96,10 +101,12 @@ fi
 %defattr(644,root,root,755)
 %doc BUGREPORTS CHANGES DEVELOPMENT EXAMPLES FAQ README SECURITY
 %dir %{_sysconfdir}/%{name}
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/*.conf
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
-%attr(754,root,root) /etc/rc.d/init.d/%{name}
-%attr(755,root,root) %{_bindir}/*
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/%{name}/example.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/socat
+%attr(754,root,root) /etc/rc.d/init.d/socat
+%attr(755,root,root) %{_bindir}/filan
+%attr(755,root,root) %{_bindir}/procan
+%attr(755,root,root) %{_bindir}/socat
 %dir /var/run/%{name}
-/usr/lib/tmpfiles.d/%{name}.conf
-%{_mandir}/man?/*
+%{systemdtmpfilesdir}/%{name}.conf
+%{_mandir}/man1/socat.1*
