@@ -11,6 +11,7 @@ Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	%{name}.tmpfiles
 URL:		http://www.dest-unreach.org/socat/
+BuildRequires:	gettext-tools
 BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	readline-devel
