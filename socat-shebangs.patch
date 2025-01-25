@@ -1,0 +1,27 @@
+diff -ruNp socat-1.8.0.2.orig/socat-broker.sh socat-1.8.0.2/socat-broker.sh
+--- socat-1.8.0.2.orig/socat-broker.sh	2024-08-24 18:06:11.000000000 +0200
++++ socat-1.8.0.2/socat-broker.sh	2025-01-25 22:24:33.059668415 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#!/bin/bash
+ # Copyright Gerhard Rieger and contributors (see file CHANGES)
+ # Published under the GNU General Public License V.2, see file COPYING
+ 
+diff -ruNp socat-1.8.0.2.orig/socat-chain.sh socat-1.8.0.2/socat-chain.sh
+--- socat-1.8.0.2.orig/socat-chain.sh	2024-08-24 18:06:11.000000000 +0200
++++ socat-1.8.0.2/socat-chain.sh	2025-01-25 22:24:40.789787417 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#!/bin/bash
+ # Copyright Gerhard Rieger and contributors (see file CHANGES)
+ # Published under the GNU General Public License V.2, see file COPYING
+ 
+diff -ruNp socat-1.8.0.2.orig/socat-mux.sh socat-1.8.0.2/socat-mux.sh
+--- socat-1.8.0.2.orig/socat-mux.sh	2024-08-24 18:06:11.000000000 +0200
++++ socat-1.8.0.2/socat-mux.sh	2025-01-25 22:24:26.416566146 +0100
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env bash
++#!/bin/bash
+ # Copyright Gerhard Rieger and contributors (see file CHANGES)
+ # Published under the GNU General Public License V.2, see file COPYING
+ 

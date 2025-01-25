@@ -10,6 +10,7 @@ Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	%{name}.tmpfiles
+Patch0:		%{name}-shebangs.patch
 URL:		http://www.dest-unreach.org/socat/
 BuildRequires:	gettext-tools
 BuildRequires:	libwrap-devel >= 7.6-30
@@ -53,6 +54,7 @@ połączeniami sieciowymi.
 
 %prep
 %setup -q
+%patch -P0 -p1
 
 %{__sed} -i -e 's#-lssl#-lssl -lcrypto#g' configure*
 
