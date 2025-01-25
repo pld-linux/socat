@@ -1,12 +1,12 @@
 Summary:	Multipurpose relay
 Summary(pl.UTF-8):	Przekaźnik o wielu zastosowaniach
 Name:		socat
-Version:	1.7.4.4
+Version:	1.8.0.2
 Release:	1
 License:	GPL v2
 Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	a605d3779465f42c07fc507cfbfb08f9
+# Source0-md5:	7272fe53d51c63ca0e08e0339681803a
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	%{name}.tmpfiles
@@ -108,6 +108,11 @@ fi
 %attr(755,root,root) %{_bindir}/filan
 %attr(755,root,root) %{_bindir}/procan
 %attr(755,root,root) %{_bindir}/socat
+%attr(755,root,root) %{_bindir}/socat-broker.sh
+%attr(755,root,root) %{_bindir}/socat-chain.sh
+%attr(755,root,root) %{_bindir}/socat-mux.sh
+%attr(755,root,root) %{_bindir}/socat1
 %dir /var/run/%{name}
 %{systemdtmpfilesdir}/%{name}.conf
 %{_mandir}/man1/socat.1*
+%{_mandir}/man1/socat1.1*
