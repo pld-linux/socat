@@ -1,12 +1,12 @@
 Summary:	Multipurpose relay
 Summary(pl.UTF-8):	Przekaźnik o wielu zastosowaniach
 Name:		socat
-Version:	1.8.0.2
+Version:	1.8.1.3
 Release:	1
 License:	GPL v2
 Group:		Networking/Utilities
 Source0:	http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.bz2
-# Source0-md5:	7272fe53d51c63ca0e08e0339681803a
+# Source0-md5:	1a5b8ddff793847d80aa100d54b7cf76
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	%{name}.tmpfiles
