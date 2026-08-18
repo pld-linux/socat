@@ -12,7 +12,10 @@ Source2:	%{name}.sysconfig
 Source3:	%{name}.tmpfiles
 Patch0:		%{name}-shebangs.patch
 URL:		http://www.dest-unreach.org/socat/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gettext-tools
+BuildRequires:	libtool
 BuildRequires:	libwrap-devel >= 7.6-30
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	readline-devel
